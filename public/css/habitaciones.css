@@ -1,0 +1,326 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%; /* Asegura que tome toda la altura de la pantalla */
+    overflow: hidden; /* Restringe el desplazamiento en la página global */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf4ec;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh; /* Asegura que el contenedor ocupe toda la pantalla */
+    width: 100vw;
+}
+
+
+/* Barra Lateral */
+.sidebar {
+    width: 250px;
+    background-image: url('/images/lateral3.png');/* Ruta a la imagen */
+    background-size: cover; /* Asegura que cubra toda la barra */
+    background-repeat: no-repeat;
+    background-position: center; /* Centra la imagen */
+    background-color: rgba(0, 0, 0, 0.3); /* Color de respaldo por si la imagen no carga */
+    background-blend-mode: overlay; /* Combina la imagen con un color */
+    color: #ffffff; /* Asegura el contraste del texto */
+    padding-top: 2rem; /* Espacio adicional en la parte superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh; /* Cubre toda la altura de la ventana */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15); /* Sombra para darle profundidad */
+    transition: background-color 0.3s ease;
+}
+
+/* Información de Usuario */
+.user-info {
+    text-align: center;
+    margin-bottom: 3rem; /* Espacio amplio debajo de la info del usuario */
+}
+
+.user-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    border: 2px solid #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.user-icon:hover {
+    transform: scale(1.1); /* Efecto de zoom en la foto del usuario */
+}
+
+.user-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.user-role {
+    font-size: 0.9rem;
+    color: #d4f1dd;
+}
+
+/* Navegación */
+nav {
+    width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: rgba(0, 0, 0, 0.3); /* Transparencia para hover */
+    transform: translateX(5px); /* Mueve el elemento a la derecha al hacer hover */
+}
+
+.nav-icon {
+    width: 22px; /* Tamaño de ícono */
+    height: 22px;
+    margin-right: 10px;
+    filter: brightness(0) invert(1); /* Asegura el color blanco en los íconos */
+}
+    
+/* Contenedor Principal */
+.main-content {
+    margin-left: 250px;
+    padding: 2rem 1rem;
+    background-color: #f4f6f9;
+    height: calc(100vh - 6rem); /* Altura menos la barra de resumen */
+    overflow-y: auto; /* Habilita el desplazamiento */
+    width: calc(100% - 250px); /* Espacio restante después de la barra lateral */
+}
+
+
+/* Personalización del scrollbar para navegadores WebKit */
+.main-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: #888; /* Color del scrollbar */
+    border-radius: 5px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Fondo del track */
+}
+
+h1 {
+    color: #2d6a4f; /* Verde más oscuro */
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #95d5b2;
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+
+/* Contenedor de Habitaciones */
+.room-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem;
+    min-height: calc(100vh - 8rem); /* Asegura que el espacio total esté cubierto */
+    position: relative; /* Mantiene el contexto para las camas dentro de la habitación */
+    z-index: 1; /* Asegura que cada habitación esté en su nivel */
+    overflow: visible; /* Permite que los elementos salgan del cuadro */
+}
+
+
+.room {
+    background: #ffffff; /* Fondo blanco puro */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde tenue */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Permite que los elementos hijos usen su contexto */
+    overflow: visible; /* Asegura que nada sea recortado dentro de este contenedor */
+    z-index: 1; /* Define un nivel base para cada cuadro */
+}
+
+/* Hover refinado */
+.room:hover {
+    transform: translateY(-5px); /* Movimiento más leve */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    border-color: #95d5b2; /* Cambia ligeramente el borde */
+}
+
+/* Separadores internos */
+.room h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2d6a4f;
+    margin-bottom: 1.5rem;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.room h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: #95d5b2;
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+
+
+/* Efecto de clic en la cama */
+.bed {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.bed img {
+    width: 55px;
+    height: 55px;
+    transition: transform 0.3s ease;
+}
+
+.bed:hover img {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: none; /* Elimina cualquier cuadro o borde alrededor del icono */
+}
+
+.bed.active img {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: none;
+}
+
+
+.bed-info {
+    display: none; /* Inicialmente oculto */
+    position: absolute; /* Posición relativa al contenedor de la cama */
+    top: 100%; /* Posiciona la información justo debajo de la cama */
+    left: 50%; /* Centra la información horizontalmente */
+    transform: translateX(-50%); /* Ajusta el centro horizontalmente */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    width: 200px;
+    z-index: 999; /* Asegura que esté encima de otros elementos */
+}
+
+.bed-info.show {
+    display: block; /* Muestra la información cuando se activa */
+}
+
+.bed-info p {
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 0.9rem; /* Ajusta el tamaño de texto para que sea más compacto */
+    line-height: 1.4;
+}
+
+.bed-info p.status {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+
+/* Animación de entrada de las habitaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animación de deslizamiento para la interfaz de información */
+@keyframes slideDown {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.room-container .room {
+    animation: fadeIn 0.8s ease both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.room-container .room {
+    animation: fadeInUp 0.8s ease both; /* Anima cada habitación */
+}
+/* Barra de Resumen (estilo cuadros) */
+.summary-bar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #ffffff;
+    padding: 1.5rem 0;
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+    border-top: 2px solid #e0e0e0;
+    position: fixed; /* Fija la barra al final de la pantalla */
+    bottom: 0;
+    left: 250px; /* Ajusta según el ancho de la barra lateral */
+    width: calc(100% - 250px); /* Ajusta el ancho del contenedor principal */
+    z-index: 1000;
+}

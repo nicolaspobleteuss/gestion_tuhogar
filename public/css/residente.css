@@ -1,0 +1,340 @@
+/* Reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+/* Barra Lateral */
+.sidebar {
+    width: 250px;
+    background-image: url('/images/lateral3.png'); /* Ruta a la imagen */
+    background-size: cover; /* Asegura que cubra toda la barra */
+    background-repeat: no-repeat;
+    background-position: center; /* Centra la imagen */
+    background-color: rgba(0, 0, 0, 0.3); /* Color de respaldo por si la imagen no carga */
+    background-blend-mode: overlay; /* Combina la imagen con un color */
+    color: #ffffff; /* Asegura el contraste del texto */
+    padding-top: 2rem; /* Espacio adicional en la parte superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh; /* Cubre toda la altura de la ventana */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15); /* Sombra para darle profundidad */
+    transition: background-color 0.3s ease;
+}
+
+/* Información de Usuario */
+.user-info {
+    text-align: center;
+    margin-bottom: 3rem; /* Espacio amplio debajo de la info del usuario */
+}
+
+.user-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    border: 2px solid #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.user-icon:hover {
+    transform: scale(1.1); /* Efecto de zoom en la foto del usuario */
+}
+
+.user-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.user-role {
+    font-size: 0.9rem;
+    color: #d4f1dd;
+}
+
+/* Navegación */
+nav {
+    width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: rgba(0, 0, 0, 0.3); /* Transparencia para hover */
+    transform: translateX(5px); /* Mueve el elemento a la derecha al hacer hover */
+}
+
+.nav-icon {
+    width: 22px; /* Tamaño de ícono */
+    height: 22px;
+    margin-right: 10px;
+    filter: brightness(0) invert(1); /* Asegura el color blanco en los íconos */
+}
+
+/* Contenedor Principal */
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    background-color: #f4f6f9;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+h1 {
+    color: #4caf50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Barra de búsqueda y botón */
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.search-bar input {
+    padding: 0.5rem;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #388e3c;
+}
+
+/* Lista de Residentes */
+.resident-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Tarjeta de Residente */
+.resident-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resident-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Ícono de Residente */
+.resident-card img {
+    width: 50px; /* Tamaño adecuado para un ícono pequeño */
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+/* Información del Residente */
+.resident-info h2 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.resident-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.2rem 0;
+}
+
+/* Botón de Detalles */
+.details-button {
+    padding: 0.4rem 1rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.details-button:hover {
+    background-color: #388e3c;
+}
+/* Modal General */
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Más oscuro para mejor contraste */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 20px; /* Reducir padding */
+    border-radius: 12px;
+    width: 350px; /* Ajustar el ancho para hacerlo más pequeño */
+    max-width: 90%; /* Respuesta en dispositivos pequeños */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s ease;
+    text-align: center;
+}
+
+/* Animación de Aparición */
+@keyframes fadeIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Encabezado del Modal */
+.modal-content h2 {
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+    font-weight: bold;
+    color: #4caf50;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+}
+
+/* Formularios del Modal */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Espacio más compacto entre elementos */
+}
+
+.modal-content label {
+    font-size: 0.9rem; /* Tamaño más pequeño para etiquetas */
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+.modal-content input,
+.modal-content select {
+    padding: 8px; /* Reducir padding */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem; /* Fuente más pequeña */
+    width: 100%;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+    border-color: #4caf50;
+    outline: none;
+    background-color: #fff;
+}
+
+.modal-content button[type="submit"] {
+    padding: 0.6rem; /* Reducir tamaño del botón */
+    font-size: 0.9rem; /* Tamaño más compacto */
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+}
+
+.modal-content button#closeModal {
+    padding: 0.6rem; /* Reducir tamaño del botón */
+    font-size: 0.9rem; /* Tamaño más compacto */
+    font-weight: bold;
+    color: #666;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-content button#closeModal:hover {
+    background-color: #c0c0c0;
+    transform: translateY(-2px);
+}
+.resident-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.resident-actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}

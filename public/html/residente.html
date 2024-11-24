@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Residentes</title>
+    <link rel="stylesheet" href="/css/residente.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="user-info">
+                <img src="/images/people.png" alt="Usuario" class="user-icon">
+                <p class="user-name">Nombre del Usuario</p>
+                <p class="user-role">Administrador</p>
+            </div>
+            <nav>
+                <a id="inicio" class="nav-item">
+                    <img src="/images/pagina-de-inicio.png" alt="Inicio" class="nav-icon"> Inicio
+                </a>
+                <a id="residentes" class="nav-item active">
+                    <img src="/images/paciente.png" alt="Residentes" class="nav-icon"> Residentes
+                </a>
+                <a id="reportes" class="nav-item">
+                    <img src="/images/historial-medico.png" alt="Reportes" class="nav-icon"> Reportes
+                </a>
+                <a id="habitaciones" class="nav-item">
+                    <img src="/images/paciente-interno.png" alt="Habitaciones" class="nav-icon"> Habitaciones
+                </a>
+                <a id="configuracion" class="nav-item">
+                    <img src="/images/configuracion-de-documentos.png" alt="Configuración" class="nav-icon"> Configuración
+                </a>
+                <a id="cerrar-sesion" class="nav-item">
+                    <img src="/images/cerrar-sesion-de-usuario.png" alt="Cerrar Sesión" class="nav-icon"> Cerrar Sesión
+                </a>
+            </nav>
+        </aside>
+        
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <h1>Gestión de Residentes</h1>
+
+            <!-- Barra de Búsqueda -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar residente por nombre o habitación...">
+                <button id="searchButton">Buscar</button>
+                <button id="addButton">Agregar</button>
+            </div>
+
+            <!-- Lista de Residentes -->
+            <div id="residentList" class="resident-list">
+                <!-- Los residentes se cargarán dinámicamente aquí -->
+            </div>
+        </main>
+    </div>
+    <!-- Modal para agregar residentes -->
+<div id="addResidentModal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Agregar Residente</h2>
+        <form id="addResidentForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+
+            <label for="habitacion_id">Habitación:</label>
+            <select id="habitacion_id" name="habitacion_id" required>
+                <option value="" disabled selected>Seleccione una habitación</option>
+                <!-- Opciones dinámicas -->
+            </select>
+
+            <label for="cama_id">Cama:</label>
+            <select id="cama_id" name="cama_id" required>
+                <option value="" disabled selected>Seleccione una cama</option>
+                <!-- Opciones dinámicas -->
+            </select>
+
+            <label for="estado_salud">Estado de Salud:</label>
+            <input type="text" id="estado_salud" name="estado_salud">
+
+            <button type="submit">Agregar Residente</button>
+            <button type="button" id="closeModal">Cancelar</button>
+        </form>
+    </div>
+</div>
+<!-- Modal para editar residentes -->
+<div id="editResidentModal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Editar Residente</h2>
+        <form id="editResidentForm">
+            <label for="edit_nombre">Nombre:</label>
+            <input type="text" id="edit_nombre" name="nombre" required>
+
+            <label for="edit_apellido">Apellido:</label>
+            <input type="text" id="edit_apellido" name="apellido" required>
+
+            <label for="edit_fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="edit_fecha_nacimiento" name="fecha_nacimiento" required>
+
+            <label for="edit_habitacion_id">Habitación:</label>
+            <select id="edit_habitacion_id" name="habitacion_id" required>
+                <option value="" disabled selected>Seleccione una habitación</option>
+                <!-- Opciones dinámicas -->
+            </select>
+
+            <label for="edit_cama_id">Cama:</label>
+            <select id="edit_cama_id" name="cama_id" required>
+                <option value="" disabled selected>Seleccione una cama</option>
+                <!-- Opciones dinámicas -->
+            </select>
+
+            <label for="edit_estado_salud">Estado de Salud:</label>
+            <input type="text" id="edit_estado_salud" name="estado_salud">
+
+            <button type="submit">Guardar Cambios</button>
+            <button type="button" id="closeEditModal">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+    <script src="/js/residentes.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Librería para gráficos -->
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="user-info">
+                <img src="/images/people.png" alt="Usuario" class="user-icon">
+                <p class="user-name">Nombre del Usuario</p>
+                <p class="user-role">Administrador</p>
+            </div>
+            <nav>
+                <a id="inicio" class="nav-item active">
+                    <img src="/images/pagina-de-inicio.png" alt="Inicio" class="nav-icon"> Inicio
+                </a>
+                <a id="residentes" class="nav-item">
+                    <img src="/images/paciente.png" alt="Residentes" class="nav-icon"> Residentes
+                </a>
+                <a id="reportes" class="nav-item">
+                    <img src="/images/historial-medico.png" alt="Reportes" class="nav-icon"> Reportes
+                </a>
+                <a id="habitaciones" class="nav-item">
+                    <img src="/images/paciente-interno.png" alt="Habitaciones" class="nav-icon"> Habitaciones
+                </a>
+                <a id="configuracion" class="nav-item">
+                    <img src="/images/configuracion-de-documentos.png" alt="Configuración" class="nav-icon"> Configuración
+                </a>
+                <a id="cerrar-sesion" class="nav-item">
+                    <img src="/images/cerrar-sesion-de-usuario.png" alt="Cerrar Sesión" class="nav-icon"> Cerrar Sesión
+                </a>
+            </nav>
+            
+        </aside>
+
+        <!-- Panel Principal -->
+        <main class="main-content">
+            <!-- Barra Superior -->
+            <header class="header">
+                <h1>Bienvenido, [Nombre del Usuario]</h1>
+                <div class="user-profile">
+                    <img src="/images/people.png" alt="User Profile" class="profile-icon">
+                    <span class="notification-icon">🔔</span>
+                </div>
+            </header>
+
+            <!-- Contenido del Dashboard -->
+            <section class="dashboard-summary">
+                <div class="card">
+                    <h3>Residentes Activos</h3>
+                    <p>50</p>
+                </div>
+                <div class="card">
+                    <h3>Alertas de Salud</h3>
+                    <p>3</p>
+                </div>
+                <div class="card">
+                    <h3>Citas Hoy</h3>
+                    <p>5</p>
+                </div>
+                <div class="card">
+                    <h3>Reportes Pendientes</h3>
+                    <p>2</p>
+                </div>
+            </section>
+
+            <!-- Información adicional con Gráfico de Ocupación y Actividades del Personal -->
+            <section class="additional-info">
+                <!-- Gráfico de Ocupación -->
+                <div class="chart-container">
+                    <h3>Capacidad del Hogar y Ocupación</h3>
+                    <canvas id="occupancyChart"></canvas>
+                </div>
+
+                <!-- Resumen de Actividades del Personal -->
+                <div class="staff-activities">
+                    <!-- Tareas Pendientes del Personal -->
+                    <div class="tasks-pending">
+                        <h3>Tareas Pendientes del Personal</h3>
+                        <ul>
+                            <li>Actualización de reportes médicos de residentes</li>
+                            <li>Entrega de medicamentos programada</li>
+                            <li>Chequeo rutinario de signos vitales</li>
+                            <li>Preparación de informe semanal</li>
+                        </ul>
+                    </div>
+
+                    <!-- Registros Recientes -->
+                    <div class="recent-logs">
+                        <h3>Registros Recientes</h3>
+                        <ul>
+                            <li>Visita médica completada para Juan Pérez</li>
+                            <li>Evaluación de salud mental para María López</li>
+                            <li>Registro de signos vitales actualizado para Ana Gómez</li>
+                            <li>Reporte de actividad diaria completado</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Gráfico de Capacidad del Hogar y Ocupación
+        const occupancyCtx = document.getElementById('occupancyChart').getContext('2d');
+        const occupancyChart = new Chart(occupancyCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ocupados', 'Disponibles'],
+                datasets: [{
+                    data: [45, 5], // Ejemplo: 45 camas ocupadas, 5 camas disponibles
+                    backgroundColor: ['#4caf50', '#e0e0e0']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
